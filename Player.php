@@ -11,20 +11,31 @@ class Player
         array_push($this->cards,$deck->drawCard());
         array_push($this->cards,$deck->drawCard());        
     }
+    public function getScore(){
+        $score = 0;
+        foreach($this->cards as $card){
+            $score += $card->getValue();
+        }
+        return $score;
+    }
 
-    public function hit(){
+    public function hit(Deck $deck){
+        array_push($this->cards,$deck->drawCard());
+        array_push($this->cards,$deck->drawCard());
+        getScore();
+        if($score >= 21){
+            $lost = true;
+        }else{
+            $lost = false;
+        }
 
     }
 
     public function surrender(){
-
-    }
-
-    public function getScore(){
-
-    }
+        $lost = true;
+    }   
 
     public function hasLost(){
-        
+        return $lost;
     }
 }
