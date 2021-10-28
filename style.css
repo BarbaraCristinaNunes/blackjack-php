@@ -1,0 +1,6 @@
+.row {
+    border: solid;
+    border-color: black;
+    background-color: blueviolet;
+    padding: 20px;
+}
