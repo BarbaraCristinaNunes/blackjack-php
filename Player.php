@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 class Player
 {
@@ -26,8 +27,6 @@ class Player
         array_push($this->cards,$deck->drawCard());
         if($this->getScore() > 21){
             $this->lost = true;
-        }else{
-            $this->lost = false;
         }
     }
     public function getCards(): array {
