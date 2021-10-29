@@ -12,29 +12,43 @@
 <body>
     <form method="post">
     <div class="container">
-        <div class="row">
+    <div class="row rounded border border-primary">
             <div class="col-xl text-center">
                 <h1>Blackjack Game</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                
+        <div class="row rounded border border-primary">
+            <div class="col-md-6 text-center">
+                <?php foreach($player->getCards() AS $card) {
+                        echo $card->getUnicodeCharacter(true);
+                        echo '   ';
+                    }
+                ?>
             </div>
-            <div class="col-md-6">
-                                
+            <div class="col-md-6 text-center">
+            <?php foreach($dealer->getCards() AS $card) {
+                        echo $card->getUnicodeCharacter(true);
+                        echo '   ';
+                    }
+                ?>                                
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-12 text-center">
+        <div class="row rounded border border-primary">
+            <div class="col-md-6 text-center">                
                     <h3>Player 1</h3>
-                </div>
-                <div class="col-md-12">
-                    <button type= "submit" value = "hit" name='hit'>Get a card</button>
-                    <button type= "submit" value = "stand" name='stand'>Stop</button>
-                    <button type= "submit" value = "surrender" name='surrender'>Surrender</button>
-                </div>
+                    <p>SCORE: <?php echo $player->getScore();?></p>                
+            </div>
+            <div class="col-md-6 text-center">                
+                    <h3>Player 2</h3>
+                    <p>SCORE: <?php echo $dealer->getScore();?></p>                                    
+            </div>
+        </div>
+        <div class="row rounded border border-primary">
+            <div class="col-md-12 text-center">
+                <p> <?php echo $message ?> </p>
+                <button type= "submit" value = "hit" name='hit' class="btn btn-info">Get a card</button>
+                <button type= "submit" value = "stand" name='stand' class="btn btn-info">Stop</button>
+                <button type= "submit" value = "surrender" name='surrender' class="btn btn-info">Surrender</button>
             </div>
         </div>
     </div>
