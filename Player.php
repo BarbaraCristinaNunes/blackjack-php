@@ -2,16 +2,19 @@
 
 class Player
 {
-    private $cards = [];
-    private $lost = false;
+    private array $cards;
+    private bool $lost = false;
 
     public function __construct(Deck $deck)
     {
         // draw to cards from the deck an put then in this cards
-        array_push($this->cards,$deck->drawCard());
-        array_push($this->cards,$deck->drawCard());        
+        $this->cards = [];
+        for($i = 0; $i < 2; $i++){
+            $this->hit($deck);
+        }       
     }
-    public function getScore(){
+
+    public function getScore(): int {
         $score = 0;
         foreach($this->cards as $card){
             $score += $card->getValue();
@@ -21,21 +24,21 @@ class Player
 
     public function hit(Deck $deck){
         array_push($this->cards,$deck->drawCard());
-        array_push($this->cards,$deck->drawCard());
-        getScore();
-        if($score >= 21){
-            $lost = true;
+        if($this->getScore() > 21){
+            $this->lost = true;
         }else{
-            $lost = false;
+            $this->lost = false;
         }
-
+    }
+    public function getCards(): array {
+        return $this->cards;
     }
 
     public function surrender(){
-        $lost = true;
+        $this->lost = true;
     }   
 
-    public function hasLost(){
-        return $lost;
+    public function hasLost(): bool {
+        return $this->lost;
     }
 }

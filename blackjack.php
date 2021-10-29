@@ -1,9 +1,9 @@
 <?php
 class Blackjack 
 {
-    private $player;
-    private $dealer;
-    private $deck;
+    private Player $player;
+    private Player $dealer;
+    private Deck $deck;
 
     public function __construct()
     {
@@ -15,17 +15,16 @@ class Blackjack
     }
 
 
-    public function getPlayer(){
-        return $player;
-
+    public function getPlayer(): Player {
+        return $this->player;
     }
 
-    public function getDealer(){
-        return $dealer;
+    public function getDealer(): Player {
+        return $this->dealer;
     }
 
-    public function getDeck(){
-        return $deck;
+    public function getDeck(): Deck {
+        return $this->deck;
     }
     
 }
