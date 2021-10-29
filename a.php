@@ -10,6 +10,7 @@
     <title>BlackJack Game</title>
 </head>
 <body>
+    <form method="post">
     <div class="container">
         <div class="row">
             <div class="col-xl text-center">
@@ -25,28 +26,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="col-md-6">
+            <div class="col-md-12">
+                <div class="col-md-12 text-center">
                     <h3>Player 1</h3>
-                    <p></p>
                 </div>
-                <div class="col-md-6">
-                    <button>Get a card</button>
-                    <button>Stop</button>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="col-md-6">
-                    <h3>Player 2</h3>
-                    <p></p>
-                </div>
-                <div class="col-md-6">
-                    <button>Get a card</button>
-                    <button>Stop</button>
+                <div class="col-md-12">
+                    <button type= "submit" value = "hit" name='hit'>Get a card</button>
+                    <button type= "submit" value = "stand" name='stand'>Stop</button>
+                    <button type= "submit" value = "surrender" name='surrender'>Surrender</button>
                 </div>
             </div>
         </div>
     </div>
+    </form>
     <script src="script.js"></script>
 </body>
 </html>
