@@ -18,14 +18,17 @@
             </div>
         </div>
         <div class="row rounded border border-primary">
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
                 <?php foreach($player->getCards() AS $card) {
                         echo $card->getUnicodeCharacter(true);
                         echo '   ';
                     }
                 ?>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-4 text-center">
+                <p style = "font-size: xx-large"> <?php echo $message ?> </p>
+            </div>
+            <div class="col-md-4 text-center">
             <?php foreach($dealer->getCards() AS $card) {
                         echo $card->getUnicodeCharacter(true);
                         echo '   ';
@@ -45,10 +48,11 @@
         </div>
         <div class="row rounded border border-primary">
             <div class="col-md-12 text-center">
-                <p> <?php echo $message ?> </p>
+                
                 <button type= "submit" value = "hit" name='hit' class="btn btn-info">Get a card</button>
                 <button type= "submit" value = "stand" name='stand' class="btn btn-info">Stop</button>
                 <button type= "submit" value = "surrender" name='surrender' class="btn btn-info">Surrender</button>
+                <button type= "submit" value = "newGame" name='newGame' class="btn btn-info">New Game</button>
             </div>
         </div>
     </div>
