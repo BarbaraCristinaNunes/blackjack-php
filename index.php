@@ -48,13 +48,9 @@ if(isset($_POST['hit'])){
 
 
 if(isset($_POST['stand'])){
-    $player->getScore();    
-    $dealer->hit($deck);
     $dealer->getScore();
-    if($dealer->getScore() < 20){
+    while($dealer->getScore() < 20){
         $dealer->hit($deck);
-    }else{
-        false;
     }
     if($dealer->getScore() == 21){
         $message = "The Dealer is the winner!";
