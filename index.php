@@ -34,30 +34,60 @@ $dealer = $blackjack->getDealer();
 // }
 
 // echo $blackjack;
+$message = '';
 
 if(isset($_POST['hit'])){
     $player->hit($deck);
-}
-
-$message = '';
-if(isset($_POST['stand'])){
-    $player->getScore();
-    
-    $dealer->hit($deck);
-    $dealer->getScore();
-    
-    if($player->getScore() < $dealer->getScore() && $dealer->getScore() < 21 && $player->getScore() < 21){
-        $dealer->hasLost();
-        $message = "The Dealer is the winner!";
-    }else{
-        $player->hasLost();
+    if($player->getScore() == 21){
         $message = "You are the winner!";
     }
+    if($player->getScore() > 21){
+        $message = "The Dealer is the winner!";
+    }
+}
+
+
+if(isset($_POST['stand'])){
+    $player->getScore();    
+    $dealer->hit($deck);
+    $dealer->getScore();
+    if($dealer->getScore() < 20){
+        $dealer->hit($deck);
+    }else{
+        false;
+    }
+    if($dealer->getScore() == 21){
+        $message = "The Dealer is the winner!";
+    }elseif($dealer->getScore() > 21){
+        $message = "You are the winner!";
+    }elseif($player->getScore() == $dealer->getScore()){
+        $message = "You are the winner!";
+    }elseif($player->getScore() < 21){
+        $message = "You are the winner!";
+    }else{
+        $message = "The Dealer is the winner!";
+    }
+
 }
 
 
 if(isset($_POST['surrender'])){
     $player->surrender();
+    // unset($_SESSION['blackjack']);
+    
+    // $blackjack = checkSession();
+
+    // $deck = $blackjack->getDeck();
+
+    // $player = $blackjack->getPlayer();
+
+    // $dealer = $blackjack->getDealer();
+
+    $message = "The Dealer is the winner!";
+}
+
+if(isset($_POST['newGame'])){
+    
     unset($_SESSION['blackjack']);
     
     $blackjack = checkSession();
@@ -67,6 +97,19 @@ if(isset($_POST['surrender'])){
     $player = $blackjack->getPlayer();
 
     $dealer = $blackjack->getDealer();
+    
+    if($player->getScore() == 21){
+        $message = "You are the winner!";
+    }
+    if($dealer->getScore() == 21){
+        $message = "The Dealer is the winner!";
+    }
+    if($dealer->getScore() > 21){
+        $message = "You are the winner!";
+    }
+    if($player->getScore()  > 21){
+        $message = "The Dealer is the winner!";
+    }
 }
 
 include 'a.php';
